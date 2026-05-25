@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>My Cute Proposal Feedback</title>
+<link rel="icon" type="image/png" href="love.png?v=1">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffe4e1, #ffccd5);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    padding: 15px;
+    position: relative;
+  }
+
+  body::before {
+    content: "❤️";
+    position: fixed;
+    font-size: 20rem;
+    opacity: 0.07;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 25px;
+    max-width: 500px;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .hero h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: #d6336c;
+    margin-bottom: 15px;
+  }
+
+  .hero p {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    color: #39373b;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  /* Form styling */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+  }
+
+  label {
+    font-weight: 600;
+    color: #d6336c;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"], textarea {
+    padding: 10px 12px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.2);
+    color: #39373b;
+    font-size: 1rem;
+    width: 100%;
+    resize: none;
+  }
+
+  input[type="text"]:focus, textarea:focus {
+    outline: none;
+    border-color: #ff4d6d;
+  }
+
+  .input-error {
+    border-color: #ff4d6d;
+    box-shadow: 0 0 0 2px rgba(255, 77, 109, 0.2);
+  }
+
+  .error-text {
+    color: #d6336c;
+    font-size: 0.85rem;
+    min-height: 1.1em;
+  }
+
+  button {
+    background: linear-gradient(135deg, #ff4d6d, #ff758f);
+    border: none;
+    font-size: 1rem;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    display: block;
+    margin: 12px auto 0;
+    width: 220px;
+    height: 50px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(255, 77, 109, 0.4);
+    animation: pulse 2s infinite;
+  }
+
+  button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    animation: none;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+
+  .heart {
+    position: fixed;
+    font-size: 1.5rem;
+    animation: burst 1s ease-out forwards;
+    pointer-events: none;
+    z-index: 99999;
+  }
+
+  @keyframes burst {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(var(--x), var(--y)) scale(0.5);
+      opacity: 0;
+    }
+  }
+
+  @media (max-height: 600px) {
+    body {
+      align-items: flex-start;
+    }
+    .hero {
+      margin-top: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>💕 Your Thoughts...</h1>
+  <img style="width: 200px; margin: 5px 0px;" src="proposetwo.png" alt="">
+  <form id="feedbackForm">
+    <div>
+      <label for="websiteRating">Do you like this website?</label>
+      <input type="text" id="websiteRating" name="websiteRating" placeholder="Type your answer..." required>
+      <small class="error-text" id="websiteRatingError" aria-live="polite"></small>
+    </div>
+    <div>
+      <label for="aboutyou">Tell me about yourself :</label>
+      <textarea id="aboutyou" name="aboutyou" rows="4" placeholder="Share about yourself..." required></textarea>
+      <small class="error-text" id="aboutyouError" aria-live="polite"></small>
+    </div>
+    <div>
+      <label for="feeling">Does this website create any feeling inside you? Tell me about it:</label>
+      <textarea id="feeling" name="feeling" rows="4" placeholder="Share your thoughts..." required></textarea>
+      <small class="error-text" id="feelingError" aria-live="polite"></small>
+    </div>
+    <div>
+      <label for="thoughts">Tell your thoughts and feelings:</label>
+      <textarea id="thoughts" name="thoughts" rows="4" placeholder="Your feelings..." required></textarea>
+      <small class="error-text" id="thoughtsError" aria-live="polite"></small>
+    </div>
+    <button type="submit">Submit 💌</button>
+  </form>
+</div>
+
+<script>
+  // Heart splash effect
+  document.addEventListener("click", function(e) {
+    for (let i = 0; i < 8; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = ["💖","💘","💝","❤️","💕"][Math.floor(Math.random()*5)];
+      document.body.appendChild(heart);
+
+      const angle = Math.random() * 2 * Math.PI;
+      const distance = Math.random() * 100 + 40;
+      const x = Math.cos(angle) * distance + "px";
+      const y = Math.sin(angle) * distance + "px";
+
+      heart.style.left = e.clientX + "px";
+      heart.style.top = e.clientY + "px";
+      heart.style.setProperty("--x", x);
+      heart.style.setProperty("--y", y);
+
+      setTimeout(() => heart.remove(), 1000);
+    }
+  });
+
+  const telegramEndpoint = "/api/telegram";
+
+  const form = document.getElementById("feedbackForm");
+  const submitButton = form.querySelector("button[type='submit']");
+  const originalButtonText = submitButton.textContent;
+
+  const fields = [
+    { id: "websiteRating", errorId: "websiteRatingError", label: "Website rating" },
+    { id: "aboutyou", errorId: "aboutyouError", label: "About yourself" },
+    { id: "feeling", errorId: "feelingError", label: "Feeling" },
+    { id: "thoughts", errorId: "thoughtsError", label: "Thoughts" }
+  ];
+
+  function clearErrors() {
+    fields.forEach(({ id, errorId }) => {
+      const input = document.getElementById(id);
+      const errorEl = document.getElementById(errorId);
+      input.classList.remove("input-error");
+      input.setAttribute("aria-invalid", "false");
+      errorEl.textContent = "";
+    });
+  }
+
+  function validateForm() {
+    clearErrors();
+    let firstInvalid = null;
+    const values = {};
+
+    fields.forEach(({ id, errorId, label }) => {
+      const input = document.getElementById(id);
+      const value = input.value.trim();
+      values[id] = value;
+
+      if (!value) {
+        const errorEl = document.getElementById(errorId);
+        errorEl.textContent = `${label} is required.`;
+        input.classList.add("input-error");
+        input.setAttribute("aria-invalid", "true");
+        if (!firstInvalid) {
+          firstInvalid = input;
+        }
+      }
+    });
+
+    if (firstInvalid) {
+      firstInvalid.focus();
+      return null;
+    }
+
+    return values;
+  }
+
+  // Handle form submission
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const values = validateForm();
+    if (!values) {
+      return;
+    }
+
+    const message = [
+      "💌 New Feedback Received!",
+      "-------------------------",
+      `🌸 Website Rating: ${values.websiteRating}`,
+      `👤 About: ${values.aboutyou}`,
+      `💖 Feeling: ${values.feeling}`,
+      `✨ Thoughts: ${values.thoughts}`
+    ].join("\n");
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+
+    fetch(telegramEndpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.ok) {
+        alert("Thank you for sharing your thoughts! 💖");
+        form.reset();
+        clearErrors();
+      } else {
+        alert("Oops! Something went wrong. Please try again.");
+      }
+    })
+    .catch(err => {
+      console.error("Error:", err);
+      alert("Error sending message.");
+    })
+    .finally(() => {
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+    });
+  });
+</script>
+
+</body>
+</html>
